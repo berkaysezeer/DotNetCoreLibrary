@@ -57,26 +57,20 @@ namespace FluentValidation.Web.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Name,Email,Age,Birthday")] Customer customer)
+        public async Task<IActionResult> Create([Bind("Name,Email,Age,Birthday,Content,Province,PostCode")] Customer customer, [Bind("Content,Province,PostCode")] List<Address> addresses)
         {
             //Fluent
-
             var result = _validator.Validate(customer);
 
             if (result.IsValid)
             {
                 _context.Add(customer);
+                addresses.ForEach(x => x.Customer = customer);
+                _context.AddRange(addresses);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
 
-            //Default
-            //if (ModelState.IsValid)
-            //{
-            //    _context.Add(customer);
-            //    await _context.SaveChangesAsync();
-            //    return RedirectToAction(nameof(Index));
-            //}
             return View(customer);
         }
 
