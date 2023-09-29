@@ -9,6 +9,6 @@
         public DateTime? Birthday { get; set; }
 
         //Customer.Address[1]
-        public IList<Address> Addresses { get; set; }
+        public IList<Address>? Addresses { get; set; }
     }
 }

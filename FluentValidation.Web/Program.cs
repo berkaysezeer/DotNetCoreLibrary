@@ -1,6 +1,7 @@
 using FluentValidation.AspNetCore;
 using FluentValidation.Web.FluentValidators;
 using FluentValidation.Web.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,6 +22,12 @@ builder.Services.AddControllersWithViews().AddFluentValidation(options =>
 
     //Way2
     options.RegisterValidatorsFromAssemblyContaining<CustomerValidator>();
+});
+
+//Modalstate üzerinden hatalarý kendimiz ayarlayabilmek için default hatalarýný engelleiyor
+builder.Services.Configure<ApiBehaviorOptions>(options =>
+{
+    options.SuppressModelStateInvalidFilter = true;
 });
 
 var connectionString = builder.Configuration.GetConnectionString("ConStr");
