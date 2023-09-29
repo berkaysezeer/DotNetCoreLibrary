@@ -10,12 +10,6 @@ var builder = WebApplication.CreateBuilder(args);
 //AutoMapper https://stackoverflow.com/questions/71216149/how-to-setup-automapper-in-asp-net-core-6
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
-//builder.Services.AddFluentValidation(conf =>
-//{
-//    conf.RegisterValidatorsFromAssembly(typeof(Program).Assembly);
-//    conf.AutomaticValidationEnabled = false;
-
-//});
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 

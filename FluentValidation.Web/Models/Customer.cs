@@ -12,5 +12,16 @@
 
         //Customer.Address[1]
         public IList<Address>? Addresses { get; set; }
+
+        //Get kullanımı CustomerProfil'deki FullName property ile eşleşmesini sağlıyor eğer bu söz dizimi kullanılmazsa manuel eşleştirilmesi gerekir
+        public string GetFullName()
+        {
+            return $"{Name} - {Email} ({Age})";
+        }
+
+        public string NameAge()
+        {
+            return $"{Name} - {Age}";
+        }
     }
 }
