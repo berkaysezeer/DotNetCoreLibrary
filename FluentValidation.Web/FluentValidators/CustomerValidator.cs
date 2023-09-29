@@ -36,6 +36,10 @@ namespace FluentValidation.Web.FluentValidators
 
             //Address validator içerisindeki tüm kuralları customer ile ilgili işlemler yapılırken uygulayabilmek için SetValidator kullandık
             RuleForEach(x => x.Addresses).SetValidator(new AddressValidator());
+
+            RuleFor(x => x.Gender)
+                .NotEmpty().WithMessage(NotEmptyMessage)
+                .IsInEnum().WithMessage("{PropertyName} Erkek = 1, Kadın = 2 Değerini Almalıdır");
         }
     }
 }
