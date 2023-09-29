@@ -3,8 +3,12 @@ using FluentValidation.Web.FluentValidators;
 using FluentValidation.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using AutoMapper;
 
 var builder = WebApplication.CreateBuilder(args);
+
+//AutoMapper https://stackoverflow.com/questions/71216149/how-to-setup-automapper-in-asp-net-core-6
+builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
 //builder.Services.AddFluentValidation(conf =>
 //{

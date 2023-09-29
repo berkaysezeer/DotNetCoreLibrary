@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using FluentValidation.Web.Models;
 using FluentValidation.Web.FluentValidators;
+using AutoMapper;
+using FluentValidation.Web.Dto;
 
 namespace FluentValidation.Web.Controllers
 {
@@ -16,22 +18,28 @@ namespace FluentValidation.Web.Controllers
     {
         private readonly Context _context;
         private readonly IValidator<Customer> _validator;
+        private readonly IMapper _mapper;
 
-        public CustomersApiController(Context context, IValidator<Customer> validator)
+        public CustomersApiController(Context context, IValidator<Customer> validator, IMapper mapper)
         {
             _validator = validator;
             _context = context;
+            _mapper = mapper;
         }
 
         // GET: api/CustomersApi
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Customer>>> GetCustomers()
+        public async Task<ActionResult<List<CustomerDto>>> GetCustomers()
         {
-            if (_context.Customers == null)
-            {
-                return NotFound();
-            }
+            List<Customer> customers = await _context.Customers.ToListAsync();
+
+            /*aşağıdaki gibi bir kullanımda modelimizdeki tüm alanlar dış dünyaya açılmış oluyor.
+             Eğer automapper ile mapping yaparsak dto'daki alanları kullanmış olacağız. Bu da sa istediğimiz alanları dış dünyaya açacağımız anlamına gelir
+
             return await _context.Customers.ToListAsync();
+             */
+
+            return _mapper.Map<List<CustomerDto>>(customers);
         }
 
         // GET: api/CustomersApi/5
