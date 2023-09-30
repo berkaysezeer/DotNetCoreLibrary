@@ -41,6 +41,11 @@ namespace FluentValidation.Web.Controllers
                 {
                     Number = "23000189",
                     ValidDate = DateTime.Now
+                },
+                Product = new Product
+                {
+                    Price = 1250,
+                    Title = "iPhone 15"
                 }
             };
 

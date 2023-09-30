@@ -13,6 +13,8 @@
         //class'ı complex hale getiriyoruz
         public CreditCard CreditCard { get; set; }
 
+        public Product Product { get; set; }
+
         //Customer.Address[1]
         public IList<Address>? Addresses { get; set; }
 
@@ -22,7 +24,7 @@
             return $"{Name} - {Email} ({Age})";
         }
 
-        public string NameAge()
+        public string GetNameAge()
         {
             return $"{Name} - {Age}";
         }
