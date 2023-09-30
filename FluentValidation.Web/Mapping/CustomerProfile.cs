@@ -24,8 +24,6 @@ namespace FluentValidation.Web.Mapping
             //    .ForMember(x => x.Eposta, opt => opt.MapFrom(x => x.Email))
             //    .ForMember(x => x.NameAge, opt => opt.MapFrom(x => x.NameAge())); 
             //modelde get söz dizimi olmadığı için manuel olarak eşledik
-
-
         }
     }
 }
