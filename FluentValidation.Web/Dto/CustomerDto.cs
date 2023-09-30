@@ -15,5 +15,9 @@
         public string FullName { get; set; }
 
         public string NameAge { get; set; }
+
+        //otomatik olarak eşleştirmek için başa class ismini yazıyoruz
+        public string CreditCardNumber { get; set; }
+        public DateTime CreditCardValidDate { get; set; }
     }
 }

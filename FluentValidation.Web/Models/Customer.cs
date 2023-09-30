@@ -10,6 +10,9 @@
 
         public Gender Gender { get; set; }
 
+        //class'ı complex hale getiriyoruz
+        public CreditCard CreditCard { get; set; }
+
         //Customer.Address[1]
         public IList<Address>? Addresses { get; set; }
 
