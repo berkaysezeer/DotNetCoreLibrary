@@ -18,11 +18,18 @@ builder.Services.AddOptions();
 //requestler (kaç istek, kaç istek kaldý vs) cache'te tutuluyor
 builder.Services.AddMemoryCache();
 
+#region IP RATE LIMIT
 //IpRateLimit deðerini json dosyasýndan alacaðýz
-builder.Services.Configure<IpRateLimitOptions>(builder.Configuration.GetSection("IpRateLimiting"));
-builder.Services.Configure<IpRateLimitPolicies>(builder.Configuration.GetSection("IpRateLimitPolicies"));
+//builder.Services.Configure<IpRateLimitOptions>(builder.Configuration.GetSection("IpRateLimiting")); //IP rate limit için
+//builder.Services.Configure<IpRateLimitPolicies>(builder.Configuration.GetSection("IpRateLimitPolicies"));
+//builder.Services.AddSingleton<IIpPolicyStore, MemoryCacheIpPolicyStore>();
+#endregion
 
-builder.Services.AddSingleton<IIpPolicyStore, MemoryCacheIpPolicyStore>();
+#region CLINET RATE LIMIT
+builder.Services.Configure<ClientRateLimitOptions>(builder.Configuration.GetSection("ClientRateLimiting")); 
+builder.Services.Configure<ClientRateLimitPolicies>(builder.Configuration.GetSection("ClientRateLimitPolicies"));
+builder.Services.AddSingleton<IClientPolicyStore, MemoryCacheClientPolicyStore>();
+#endregion
 
 //datalarý memoryde tutmak için nesne örneði alýyoruz
 builder.Services.AddSingleton<IRateLimitCounterStore, MemoryCacheRateLimitCounterStore>();
@@ -46,7 +53,8 @@ if (app.Environment.IsDevelopment())
 }
 
 //builder.Services üzerindeki ayarlarý kullanmasý için
-app.UseIpRateLimiting();
+//app.UseIpRateLimiting();
+app.UseClientRateLimiting();
 
 app.UseHttpsRedirection();
 
@@ -54,8 +62,8 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-var ipPolicyStore = app.Services.GetRequiredService<IIpPolicyStore>();
-ipPolicyStore.SeedAsync().GetAwaiter().GetResult();
+//var ipPolicyStore = app.Services.GetRequiredService<IIpPolicyStore>();
+//ipPolicyStore.SeedAsync().GetAwaiter().GetResult();
 
 var clientPolicyStore = app.Services.GetRequiredService<IClientPolicyStore>();
 clientPolicyStore.SeedAsync().GetAwaiter().GetResult();
