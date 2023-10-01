@@ -1,4 +1,6 @@
 using AspNetCoreRateLimit;
+using Microsoft.AspNetCore.HttpsPolicy;
+using RateLimit.Api.Middleware;
 
 //https://dotnethow.net/implementing-api-rate-limiting-in-net-web-apis/
 
@@ -33,6 +35,7 @@ builder.Services.AddSingleton<IProcessingStrategy, AsyncKeyLockProcessingStrateg
 //gelen request içindeki datalarý okuyabilmek için ekliyoruz
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
+builder.Services.AddSingleton<IClientPolicyStore, MemoryCacheClientPolicyStore>();
 
 var app = builder.Build();
 
@@ -52,4 +55,11 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+var ipPolicyStore = app.Services.GetRequiredService<IIpPolicyStore>();
+ipPolicyStore.SeedAsync().GetAwaiter().GetResult();
+
+var clientPolicyStore = app.Services.GetRequiredService<IClientPolicyStore>();
+clientPolicyStore.SeedAsync().GetAwaiter().GetResult();
+
 app.Run();
+
