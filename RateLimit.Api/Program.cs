@@ -1,6 +1,5 @@
 using AspNetCoreRateLimit;
 using Microsoft.AspNetCore.HttpsPolicy;
-using RateLimit.Api.Middleware;
 
 //https://dotnethow.net/implementing-api-rate-limiting-in-net-web-apis/
 
