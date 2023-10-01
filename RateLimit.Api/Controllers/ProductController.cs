@@ -12,5 +12,11 @@ namespace RateLimit.Api.Controllers
         {
             return Ok(new { Id = 1, Name = "Kalem", Price = 20 });
         }
+
+        [HttpPut]
+        public IActionResult UpdateProduct()
+        {
+            return Ok();
+        }
     }
 }
