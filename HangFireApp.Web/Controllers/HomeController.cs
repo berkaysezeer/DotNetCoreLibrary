@@ -42,6 +42,7 @@ namespace HangFireApp.Web.Controllers
 
         public IActionResult ImageSave()
         {
+            RecurringJob.ReportingJob();
             return View();
         }
 
@@ -64,6 +65,8 @@ namespace HangFireApp.Web.Controllers
 
                 string jobId = DelayedJobs.WatermarkAdderJob(newFileName, "HangFire");
                 //string jobId = DelayedJobs.AddWatermarkJob(newFileName, "HangFire");
+
+                ContinuationJob.WriteWatermarkStatusJob(jobId, newFileName);
             }
 
             return View();
