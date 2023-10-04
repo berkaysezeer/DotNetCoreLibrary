@@ -35,7 +35,36 @@ namespace HangFireApp.Web.Controllers
             //üye kayıt işlemi gerçekleşen metot
 
             //job oluşturma
-            FireAndForgetJob.EmailSendToUserJob("berkaysezeer", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ");
+            FireAndForgetJobs.EmailSendToUserJob("berkaysezeer", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ");
+
+            return View();
+        }
+
+        public IActionResult ImageSave()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ImageSave(IFormFile image)
+        {
+            string newFileName = String.Empty;
+
+            if (image != null && image.Length > 0)
+            {
+                //abc.jpg
+                newFileName = Guid.NewGuid().ToString() + Path.GetExtension(image.FileName);
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", newFileName);
+
+                //FileStream IDisposable implement ettiği için using kullanıyoruz. yani dispose etmemize gerek kalmıyor
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    await image.CopyToAsync(stream);
+                }
+
+                string jobId = DelayedJobs.WatermarkAdderJob(newFileName, "HangFire");
+                //string jobId = DelayedJobs.AddWatermarkJob(newFileName, "HangFire");
+            }
 
             return View();
         }

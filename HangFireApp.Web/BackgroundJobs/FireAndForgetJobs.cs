@@ -2,7 +2,7 @@
 
 namespace HangFireApp.Web.BackgroundJobs
 {
-    public class FireAndForgetJob
+    public class FireAndForgetJobs
     {
         public static void EmailSendToUserJob(string userId, string message)
         {

@@ -17,6 +17,7 @@ builder.Services.AddHangfireServer();
 
 //IEmailSender olan yerde EmailSender'dan neste örneði alýr
 builder.Services.AddScoped<IEmailSender, EmailSender>();
+builder.Services.AddScoped<IWatermarkAdder, WatermarkAdder>();
 
 var app = builder.Build();
 
