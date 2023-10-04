@@ -1,5 +1,6 @@
 using Hangfire;
 using HangFireApp.Web.Models;
+using HangFireApp.Web.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +14,9 @@ builder.Services.AddHangfire(x => x.UseSqlServerStorage(connectionString));
 
 //projenin ayný zamanda bir hangfire server olmasýný saðlýyoruz
 builder.Services.AddHangfireServer();
+
+//IEmailSender olan yerde EmailSender'dan neste örneði alýr
+builder.Services.AddScoped<IEmailSender, EmailSender>();
 
 var app = builder.Build();
 
