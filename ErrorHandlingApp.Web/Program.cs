@@ -1,3 +1,5 @@
+using static System.Net.Mime.MediaTypeNames;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -15,6 +17,18 @@ else
 {
     //stack, query, cookies, headers gibi tablar içerek sayfa açýlýr
     app.UseDeveloperExceptionPage();
+
+
+    //status code dönmesi için ayar yapýyoruz
+    //app.UseStatusCodePages("text/plain", "Beklenmedik bir hata ile karþýlaþýldý: {0}");
+
+    app.UseStatusCodePages(async statusCodeContext =>
+    {
+        statusCodeContext.HttpContext.Response.ContentType = Text.Plain;
+
+        await statusCodeContext.HttpContext.Response.WriteAsync(
+            $"Beklenmedik bir hata ile karþýlaþýldý: {statusCodeContext.HttpContext.Response.StatusCode}");
+    });
 }
 
 //herhangi bir hata alýndýðýnda hata sayfasýna yönelndirilmesi saðlanýr
