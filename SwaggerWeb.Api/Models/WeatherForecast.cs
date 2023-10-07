@@ -1,4 +1,4 @@
-namespace SwaggerWeb.Api
+﻿namespace SwaggerWeb.Api.Models
 {
     public class WeatherForecast
     {

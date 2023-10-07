@@ -1,9 +1,10 @@
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using SwaggerWeb.Api.Models;
 
-namespace SwaggerWeb.Api.Controllers
+namespace SwaggerApp.Api.Controllers
 {
-    [ApiController]
     [Route("[controller]")]
+    [ApiController]
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
@@ -18,7 +19,7 @@ namespace SwaggerWeb.Api.Controllers
             _logger = logger;
         }
 
-        [HttpGet]
+        [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()
         {
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast

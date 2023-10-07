@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using SwaggerWeb.Api.Models;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,9 +10,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddSwaggerGen(gen =>
 {
-    gen.SwaggerDoc("v1", new OpenApiInfo
+    gen.SwaggerDoc("ProductApiV1", new OpenApiInfo
     {
-        Version = "v1",
+        Version = "1.0",
         Title = "Product Api",
         Description = "Ürün ekleme, silme, güncelleme iþlemlerini gerçekleþtiren api",
         Contact = new OpenApiContact
@@ -39,9 +40,9 @@ builder.Services.AddDbContext<SwaggerDbContext>(options =>
 var app = builder.Build();
 
 app.UseSwagger();
-app.UseSwaggerUI(option =>
+app.UseSwaggerUI(options =>
 {
-    option.SwaggerEndpoint("/swagger/v1/swagger.json", "Product Api");
+    options.SwaggerEndpoint("/swagger/ProductApiV1/swagger.json", "Product Api");
 });
 
 // Configure the HTTP request pipeline.
