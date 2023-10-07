@@ -15,6 +15,19 @@ namespace NLogApp.Web.Controllers
 
         public IActionResult Index()
         {
+            int value = 5, value2 = 0;
+            int result;
+
+            try
+            {
+                result = value / value2;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, ex.Message);
+            }
+
+
             _logger.LogInformation("Hello, this is the Index!");
             return View();
         }
