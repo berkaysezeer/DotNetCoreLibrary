@@ -15,11 +15,13 @@ namespace NLogApp.Web.Controllers
 
         public IActionResult Index()
         {
+            _logger.LogInformation("Hello, this is the Index!");
             return View();
         }
 
         public IActionResult Privacy()
         {
+            _logger.LogInformation("Hello, this is the Privacy!");
             return View();
         }
 
