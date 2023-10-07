@@ -1,10 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using SwaggerWeb.Api.Models;
 using Microsoft.OpenApi.Models;
-using Microsoft.OpenApi;
-using Swashbuckle.AspNetCore.Swagger;
-using Swashbuckle.AspNetCore.SwaggerGen;
-using Swashbuckle.AspNetCore.SwaggerUI;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -27,12 +23,10 @@ builder.Services.AddSwaggerGen(gen =>
     });
 
     //xml dosyasýnýn ayarlarýný yapýyoruz
-    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName()}.xml";
+    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
     var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
     gen.IncludeXmlComments(xmlPath);
 });
-
-
 
 builder.Services.AddControllers();
 
@@ -43,6 +37,12 @@ builder.Services.AddDbContext<SwaggerDbContext>(options =>
 });
 
 var app = builder.Build();
+
+app.UseSwagger();
+app.UseSwaggerUI(option =>
+{
+    option.SwaggerEndpoint("/swagger/v1/swagger.json", "Product Api");
+});
 
 // Configure the HTTP request pipeline.
 
