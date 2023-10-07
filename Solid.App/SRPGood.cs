@@ -4,29 +4,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Solid.App.SRP
+namespace Solid.App.SRP.Good
 {
 
-    /*
-     SRP için kötü kdolama örneğidir. Çünkü;
-    1-WriteToConsole: Class'ın konsola yazma görevi var
-    2- SaveOrUpdate ve Delete işlemleri yapıyor (crud)
-    3- Property bilgilerini de aynı class'ta tutuyoruz. Temel property tanımlamaları farklı classta olmalıydı
-     */
+    //Temel propertyleri de ayırmış olduk. (3. sorumluluk)
     public class Product
     {
         public int Id { get; set; }
         public string Name { get; set; }
 
+    }
 
+    //Repository görevini üstlenene classı ayırarak 2. sorumluluğu çözmüş olduk.
+    public class ProductRepository
+    {
         private static List<Product> ProductList = new List<Product>();
 
-        //Kısaca Get ayarı yapıldı (Property'i dış dünyaya açtık)
-        public List<Product> GetProducts => ProductList;
-
-        //public List<Product> GetProducts { get {  return ProductList; } }
-
-        public Product()
+        public ProductRepository()
         {
             ProductList = new()
             {
@@ -37,6 +31,10 @@ namespace Solid.App.SRP
                 new(){Id=5, Name="Kalem5"},
             };
         }
+
+        //Kısaca Get ayarı yapıldı. (Property'i dış dünyaya açtık)
+        public List<Product> GetProducts => ProductList;
+        //public List<Product> GetProducts { get {  return ProductList; } }
 
         public void SaveOrUpdate(Product product)
         {
@@ -67,7 +65,12 @@ namespace Solid.App.SRP
             ProductList.Remove(hasProduct);
         }
 
-        public void WriteToConsole()
+    }
+
+    //ürünü sunan bir class ayarladık. Bununla birlikte ilk sorumluluğu çözmüş olduk.
+    public class ProductPresenter
+    {
+        public void WriteToConsole(List<Product> ProductList)
         {
             ProductList.ForEach(
                 x => Console.WriteLine($"{x.Id} - {x.Name}")
