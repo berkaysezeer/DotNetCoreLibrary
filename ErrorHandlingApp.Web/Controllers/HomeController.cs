@@ -17,8 +17,8 @@ namespace ErrorHandlingApp.Web.Controllers
 
         public IActionResult Index()
         {
-            int value1 = 5, value2 = 0;
-            int result = value1 / value2;
+            //int value1 = 5, value2 = 0;
+            //int result = value1 / value2;
 
             return View();
         }
