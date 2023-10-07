@@ -1,4 +1,5 @@
-﻿using ErrorHandlingApp.Web.Models;
+﻿using ErrorHandlingApp.Web.Filters;
+using ErrorHandlingApp.Web.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
@@ -15,14 +16,16 @@ namespace ErrorHandlingApp.Web.Controllers
             _logger = logger;
         }
 
+        [CustomHandleExceptionFilterAttribute(ErrorPage = "Error1")]
         public IActionResult Index()
         {
-            //int value1 = 5, value2 = 0;
-            //int result = value1 / value2;
+            int value1 = 5, value2 = 0;
+            int result = value1 / value2;
 
             return View();
         }
 
+        [CustomHandleExceptionFilterAttribute(ErrorPage = "Error2")]
         public IActionResult Privacy()
         {
             throw new FileNotFoundException();
@@ -40,6 +43,16 @@ namespace ErrorHandlingApp.Web.Controllers
             ViewBag.StackTrace = ex.Error.StackTrace;
 
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public IActionResult Error1()
+        {
+            return View();
+        }
+
+        public IActionResult Error2()
+        {
+            return View();
         }
     }
 }

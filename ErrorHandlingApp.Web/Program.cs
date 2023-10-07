@@ -15,14 +15,14 @@ if (!app.Environment.IsDevelopment())
 
     //custom hata sayfasý da yazabiliriz
 
-    app.UseExceptionHandler(context =>
+    //app.UseExceptionHandler(context =>
 
-    context.Run(async page =>
-    {
-        page.Response.ContentType = "text/html";
-        await page.Response.WriteAsync($"<html><head><h1>{page.Response.StatusCode}</h1></head></html>");
-    })
-    );
+    //context.Run(async page =>
+    //{
+    //    page.Response.ContentType = "text/html";
+    //    await page.Response.WriteAsync($"<html><head><h1>{page.Response.StatusCode}</h1></head></html>");
+    //})
+    //);
 
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
@@ -47,7 +47,6 @@ else
             $"Beklenmedik bir hata ile karþýlaþýldý: {statusCodeContext.HttpContext.Response.StatusCode}");
     });
 }
-
 
 
 app.UseHttpsRedirection();

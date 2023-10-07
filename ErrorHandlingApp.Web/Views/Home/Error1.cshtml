@@ -1,0 +1,11 @@
+﻿
+@{
+    Exception exception = ViewData["Exception"] as Exception;
+    ViewData["Title"] = "Error1";
+}
+
+<h1 class="text-danger">Error1.</h1>
+<h2 class="text-danger">@exception.Message</h2>
+<h3>@ViewData["Url"]</h3>
+<hr />
+<p>@exception.StackTrace</p>
