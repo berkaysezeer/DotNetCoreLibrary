@@ -3,6 +3,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+//built-in logging providerslarý kapatýyoruz
+//builder.Logging.ClearProviders();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
