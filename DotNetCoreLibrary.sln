@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggingApp.Web", "LoggingAp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLogApp.Web", "NLogApp.Web\NLogApp.Web.csproj", "{E37CD2A2-4D80-4B89-B031-41A37FB5BB89}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwaggerWeb.Api", "SwaggerWeb.Api\SwaggerWeb.Api.csproj", "{459CD237-67DE-4262-847F-74EEC81FEDD2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{E37CD2A2-4D80-4B89-B031-41A37FB5BB89}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E37CD2A2-4D80-4B89-B031-41A37FB5BB89}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E37CD2A2-4D80-4B89-B031-41A37FB5BB89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{459CD237-67DE-4262-847F-74EEC81FEDD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{459CD237-67DE-4262-847F-74EEC81FEDD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{459CD237-67DE-4262-847F-74EEC81FEDD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{459CD237-67DE-4262-847F-74EEC81FEDD2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
