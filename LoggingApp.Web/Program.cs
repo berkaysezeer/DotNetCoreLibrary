@@ -7,6 +7,17 @@ builder.Services.AddControllersWithViews();
 //builder.Logging.ClearProviders();
 
 var app = builder.Build();
+var logger = app.Services.GetRequiredService<ILogger<Program>>();
+string message = "Uygulama ayaða baþlatýlýyor...";
+
+//core, 3 provider saðlýyor; console, debug, EventSource, EventLog
+logger.LogTrace(message);
+logger.LogDebug(message);
+logger.LogInformation(message);
+logger.LogWarning(message);
+logger.LogError(message);
+logger.LogCritical(message);
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
