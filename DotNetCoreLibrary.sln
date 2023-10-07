@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ErrorHandlingApp.Web", "Err
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggingApp.Web", "LoggingApp.Web\LoggingApp.Web.csproj", "{CA13AEC8-9782-477D-AC57-1311F961858A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLogApp.Web", "NLogApp.Web\NLogApp.Web.csproj", "{E37CD2A2-4D80-4B89-B031-41A37FB5BB89}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{CA13AEC8-9782-477D-AC57-1311F961858A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA13AEC8-9782-477D-AC57-1311F961858A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA13AEC8-9782-477D-AC57-1311F961858A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E37CD2A2-4D80-4B89-B031-41A37FB5BB89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E37CD2A2-4D80-4B89-B031-41A37FB5BB89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E37CD2A2-4D80-4B89-B031-41A37FB5BB89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E37CD2A2-4D80-4B89-B031-41A37FB5BB89}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
