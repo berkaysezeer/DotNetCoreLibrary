@@ -7,7 +7,7 @@ using System.Diagnostics;
 
 namespace ErrorHandlingApp.Web.Controllers
 {
-    [CustomHandleExceptionFilterAttribute(ErrorPage = "Error1")]
+    //[CustomHandleExceptionFilterAttribute(ErrorPage = "Error1")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -51,5 +51,10 @@ namespace ErrorHandlingApp.Web.Controllers
             return View();
         }
 
+
+        public IActionResult Error2()
+        {
+            return View();
+        }
     }
 }

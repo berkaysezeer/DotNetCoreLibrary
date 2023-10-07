@@ -1,3 +1,4 @@
+using ErrorHandlingApp.Web.Filters;
 using static System.Net.Mime.MediaTypeNames;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -5,6 +6,14 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+//uygulama bazýnda handler yapabilmek için yazýyoruz
+builder.Services.AddMvc(opt =>
+{
+    opt.Filters.Add(new CustomHandleExceptionFilterAttribute()
+    {
+        ErrorPage = "Error1"
+    });
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
