@@ -1,7 +1,8 @@
 ﻿// See https://aka.ms/new-console-template for more information
 //using Solid.App.OCPBad;
 //using Solid.App.OCPGood;
-using Solid.App.LSPBad;
+//using Solid.App.LSPBad;
+//using Solid.App.LSPGood;
 
 #region OCP
 using Solid.App.OCPGood2;
@@ -36,13 +37,27 @@ using Solid.App.OCPGood2;
 #endregion
 
 #region LSPBad
-BasePhone phone = new IPhone();
-phone.Call();
-phone.TakePhoto();
+//BasePhone phone = new IPhone();
+//phone.Call();
+//phone.TakePhoto();
 
-//Nokia3310 sınıfını kullanınca hata verdiği. bir class başka bir classın yerini alamadı
-//TakePhoto() metodunun gelmemesi lazım
-phone = new Nokia3310();
-phone.Call();
-phone.TakePhoto();
+////Nokia3310 sınıfını kullanınca hata verdiği. bir class başka bir classın yerini alamadı
+////TakePhoto() metodunun gelmemesi lazım
+//phone = new Nokia3310();
+//phone.Call();
+//phone.TakePhoto();
+#endregion
+
+#region LSPGood
+
+//BasePhone phone = new IPhone();
+//phone.Call();
+////TakePhoto kullanabilmek için (ITakePhoto)'ya cast ettik *BasePhone phone olarak nesne örneği oluşturduğumuz için kullanamadık
+//((ITakePhoto)phone).TakePhoto();
+
+////Nokia3310 sınıfını kullanınca hata verdiği. bir class başka bir classın yerini alamadı
+////TakePhoto() metodunun gelmemesi lazım
+//phone = new Nokia3310();
+//phone.Call();
+
 #endregion
