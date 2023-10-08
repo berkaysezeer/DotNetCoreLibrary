@@ -17,6 +17,6 @@ https://www.udemy.com/course/net-core-developer-bilmesi-gereken-kutuphaneler-kon
   
 ## Kullanılan Teknolojiler ve Kütüphaneler
 
-C#, .NET Core 6.0, FluentValdation, AutoMapper, AspNetCoreRateLimit, Smidge, Hangfire,Error Handling, Logging (Built-in logging providers, NLog), Swagger (Swashbuckle)
+C#, .NET Core 6.0, .NET Core 7.0, FluentValdation, AutoMapper, AspNetCoreRateLimit, Smidge, Hangfire,Error Handling, Logging (Built-in logging providers, NLog), Swagger (Swashbuckle), SOLID Examples
 
   
