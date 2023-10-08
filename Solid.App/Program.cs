@@ -64,6 +64,11 @@ using Solid.App.OCPGood2;
 #endregion
 
 #region DIP
-var ProductService = new ProductService(new ProductRepositoryFromSql());
-ProductService.GetAll().ForEach(product => Console.WriteLine(product));
+ProductService productService;
+
+productService = new ProductService(new ProductRepositoryFromSql());
+productService.GetAll().ForEach(product => Console.WriteLine(product));
+
+productService = new ProductService(new ProductRepositoryFromOracle());
+productService.GetAll().ForEach(product => Console.WriteLine(product));
 #endregion
