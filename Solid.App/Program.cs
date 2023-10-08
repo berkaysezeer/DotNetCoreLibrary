@@ -3,6 +3,7 @@
 //using Solid.App.OCPGood;
 //using Solid.App.LSPBad;
 //using Solid.App.LSPGood;
+using Solid.App.DIP;
 
 #region OCP
 using Solid.App.OCPGood2;
@@ -60,4 +61,9 @@ using Solid.App.OCPGood2;
 //phone = new Nokia3310();
 //phone.Call();
 
+#endregion
+
+#region DIP
+var ProductService = new ProductService(new ProductRepositoryFromSql());
+ProductService.GetAll().ForEach(product => Console.WriteLine(product));
 #endregion
