@@ -8,7 +8,7 @@ Asp.Net Core Mvc/API Projesi inşa ederken, ihtiyacınız olan en önemli kütü
 
 https://www.udemy.com/user/fatih-cakiroglu-2/
 https://www.udemy.com/course/net-core-developer-bilmesi-gereken-kutuphaneler-konular/
-
+https://www.udemy.com/certificate/UC-fb0aae89-ad1e-418f-820a-f9db41829250/
   
 ## Teşekkür
 
